@@ -1,0 +1,162 @@
+#include <iostream>
+#include <vector>
+
+// does not account for ties or picking the same position, may improve with a battleship type positioning
+
+int main(){
+
+  char player_choice1;
+  char player_choice2;
+  std::string name1;
+  std::string name2;
+  std::vector<char> plays = {'t','t','t','t','t','t','t','t','t'};
+  std::vector<std::string> position = {" "," "," "," "," "," "," "," "," "};
+  std::string varx;
+  std::string vary;
+  int answer;
+  bool end_game = false;
+  int turn = 1;
+  
+  std::cout << "Welcome to Tic-Tac-Toe\nChoose your player...\nX or O\n";
+  std::cin >> player_choice1;
+
+  varx = player_choice1;
+  vary = player_choice2;
+
+  if(player_choice1 == 'X'){
+    player_choice2 = 'O';
+    
+  } else{
+    player_choice2 = 'X';
+  }
+
+  std::cout << "Player " << player_choice1 << " please enter your name: ";
+  std::cin >> name1;
+
+  std::cout << "\nPlayer " << player_choice2 << " please enter your name: ";
+  std::cin >> name2;
+
+  std::cout << "To play the game you must get 3 in a row up, down, or diagonally...\nTo choose a position pick the number the corresponds to the spot\n";
+  std::cout << "      |     |     \n";
+  std::cout << "   1  |  2  |   3 \n";
+  std::cout << " _____|_____|_____\n";
+  std::cout << "      |     |     \n";
+  std::cout << "   4  |  5  |  6  \n";
+  std::cout << " _____|_____|_____\n";
+  std::cout << "      |     |     \n";
+  std::cout << "   7  |  8  |  9  \n";
+  std::cout << "      |     |     \n";
+
+//  std::cout << "\n" << name1 << " you're up, pick a number\n";
+  //std::cin  >> answer;
+
+  while (!end_game){
+    
+    if (turn %2 != 0){
+    std::cout << name1 << "'s turn: ";
+    std::cin >> answer;
+    plays[answer+1] = player_choice1;
+    position[answer-1] = player_choice1;
+    }
+  
+    if (turn %2 == 0){
+    std::cout << name2 << "'s turn: ";
+    std::cin >> answer;
+    plays[answer+1] = player_choice2;
+    position[answer-1] = player_choice2;
+    }
+
+
+  std::cout << "      |     |     \n";
+  std::cout << "   " << position[0] <<  "  |  " << position[1] << "  |  " << position[2] << "  \n";
+  std::cout << " _____|_____|_____\n";
+  std::cout << "      |     |     \n";
+  std::cout << "   " << position[3] <<  "  |  " << position[4] << "  |  " << position[5] << "  \n";
+  std::cout << " _____|_____|_____\n";
+  std::cout << "      |     |     \n";
+  std::cout << "   " << position[6] <<  "  |  " << position[7] << "  |  " << position[8] << "  \n";
+  std::cout << "      |     |     \n";
+
+
+    
+    if ((position[0] == varx) && (position[1] == varx) && (position[2] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+    }
+     else if((position[3] == varx) && (position[4] == varx) && (position[5] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[6] == varx) && (position[7] == varx) && (position[8] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[0] == varx) && (position[3] == varx) && (position[6] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[1] == varx) && (position[4] == varx) && (position[7] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[2] == varx) && (position[5] == varx) && (position[8] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[0] == varx) && (position[4] == varx) && (position[8] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+
+    } else if((position[2] == varx) && (position[4] == varx) && (position[6] == varx)){
+          std::cout << name1 << "Won!";
+          end_game = true;
+    } 
+    
+    
+     else if ((position[0] == vary) && (position[1] == vary) && (position[2] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[3] == vary) && (position[4] == vary) && (position[5] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[6] == vary) && (position[7] == vary) && (position[8] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[0] == vary) && (position[3] == vary) && (position[6] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[1] == vary) && (position[4] == vary) && (position[7] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[2] == vary) && (position[5] == vary) && (position[8] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[0] == vary) && (position[4] == vary) && (position[8] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } else if((position[2] == vary) && (position[4] == vary) && (position[6] == vary)){
+          std::cout << name2 << "Won!";
+          end_game = true;
+
+    } 
+    
+    
+    turn++;
+    //end_game = true;
+
+
+
+    }
+
+
+
+
+}
+
